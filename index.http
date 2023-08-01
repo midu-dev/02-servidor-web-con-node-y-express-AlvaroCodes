@@ -1,0 +1,21 @@
+### Petición GET /
+GET http://localhost:1234/
+
+### Petición imagen
+GET http://localhost:1234/logo.webp
+
+### POST
+POST http://localhost:1234/contacto
+Content-Type: application/json
+
+{
+  "name": "ditto",
+  "email": "normal",
+  "message": "transform"
+}
+
+### POST 404
+POST http://localhost:1234/dlfkgjdlkfg
+
+### GET 404
+GET http://localhost:1234/dfskdjghfksjd

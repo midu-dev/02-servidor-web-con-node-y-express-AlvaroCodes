@@ -3,7 +3,9 @@
 		"lint": "standard",
 		"test": "npm run test:node && npm run test:express",
 		"test:node": "node --test ./test/index.js",
-		"test:express": "node --test ./test/express.js"
+		"test:express": "node --test ./test/express.js",
+		"ej1": "node --watch index.js",
+		"ej2":  "node --watch express.js"
 	},
 	"devDependencies": {
 		"standard": "17.1.0"
