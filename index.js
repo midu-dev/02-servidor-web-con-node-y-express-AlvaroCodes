@@ -68,10 +68,9 @@ function startServer () {
     console.log('Escuchando el puerto: http://localhost:' + PORT)
   })
   return Server
-  // return server
 }
 
-startServer()
+// startServer()
 
 module.exports = {
   startServer
