@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Test HTTP Node",
+      "setup": "npm install",
+      "run": "npm run test:node",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Test Express",
+      "setup": "npm install",
+      "run": "npm run test:express",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
