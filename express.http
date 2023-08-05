@@ -1,14 +1,16 @@
-### GET / Hola Mundo
+### [X] GET / Hola Mundo
 GET http://localhost:1234/
 
-### POST / 405
+### [X] POST / 405
 POST http://localhost:1234/
 
-### Petición imagen
+### [X] GET / Petición imagen
 GET http://localhost:1234/logo.webp
 
+### [X] GET /  404
+GET http://localhost:1234/404
 
-### POST
+### [X] POST / Contact 201
 POST http://localhost:1234/contacto
 Content-Type: application/json
 
@@ -18,7 +20,8 @@ Content-Type: application/json
   "message": "transform"
 }
 
-### PUT / 405
+
+### [X] PUT / Contect 405
 PUT http://localhost:1234/contacto
 Content-Type: application/json
 
@@ -27,9 +30,3 @@ Content-Type: application/json
   "email": "normal",
   "message": "transform"
 }
-
-### POST 404
-POST http://localhost:1234/404
-
-### GET 401
-GET http://localhost:1234/dfskdjghfksjd

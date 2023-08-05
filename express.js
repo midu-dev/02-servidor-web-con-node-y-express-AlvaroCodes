@@ -4,9 +4,10 @@ const Path = require('node:path')
 const PORT = 1234
 // const PATH_LOGO = Path.join(__dirname, 'assets', 'logo.webp')
 const PATH_LOGO = Path.join(__dirname, 'assets')
+// const PATH_LOGO = './assets'
 
 // Ejercicio 2: crear servidor HTTP con Express
-function startServer () {
+async function startServer () {
   const app = Express()
   app.disable('x-powered-by')
 
@@ -17,9 +18,10 @@ function startServer () {
   // Routers
   routers(app)
   // Server
-  const server = app.listen(PORT, () => {
+  const server = await app.listen(PORT, () => {
     console.log('Server in ' + PORT)
   })
+
   return server
 }
 
@@ -38,7 +40,6 @@ function routers (app) {
   // })
 
   app.all('/contacto', ({ body, method }, res) => {
-    console.log(method)
     if (method === 'POST') {
       res.status(201).send(body)
     } else {
@@ -54,6 +55,8 @@ function routers (app) {
     res.status(404).send('<h1>404</h1>')
   })
 }
+
+// startServer()
 
 module.exports = {
   startServer
