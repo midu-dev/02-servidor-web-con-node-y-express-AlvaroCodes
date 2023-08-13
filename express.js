@@ -1,19 +1,19 @@
-const Express = require('express')
-const Path = require('node:path')
+const express = require('express')
+const path = require('node:path')
 
-const PORT = 1234
-// const PATH_LOGO = Path.join(__dirname, 'assets', 'logo.webp')
-const PATH_LOGO = Path.join(__dirname, 'assets')
+const PORT = process.env.PORT ?? 1234
+// const PATH_LOGO = path.join(__dirname, 'assets', 'logo.webp')
+const PATH_LOGO = path.join(__dirname, 'assets')
 // const PATH_LOGO = './assets'
 
-// Ejercicio 2: crear servidor HTTP con Express
+// Ejercicio 2: crear servidor HTTP con express
 async function startServer () {
-  const app = Express()
+  const app = express()
   app.disable('x-powered-by')
 
   // Middleware
-  app.use(Express.json())
-  app.use(Express.static(PATH_LOGO))
+  app.use(express.json())
+  app.use(express.static(PATH_LOGO))
 
   // Routers
   routers(app)
@@ -51,9 +51,7 @@ function routers (app) {
     res.status(404).send('<h1>404</h1>')
   })
 
-  app.all('*', (req, res) => {
-    res.status(404).send('<h1>404</h1>')
-  })
+  app.use((req, res) => { res.status(404).send('<h1>404</h1>') })
 }
 
 // startServer()
