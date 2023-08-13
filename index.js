@@ -1,5 +1,5 @@
-const HTTP = require('node:http')
-const FS = require('node:fs')
+const http = require('node:http')
+const fs = require('node:fs')
 
 const PORT = process.env.PORT ?? 1234
 
@@ -17,13 +17,13 @@ const methodGet = (req, res) => {
   }
 
   if (req.url === '/logo.webp') {
-    FS.readFile('./assets/logo.webp', (err, data) => {
+    fs.readFile('./assets/logo.webp', (err, data) => {
       if (err) {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.statusCode = 500
         res.end('<h1>Internal server error</h1>')
       } else {
-        res.setHeader('Content-Type', 'image/png')
+        res.setHeader('Content-Type', 'image/webp')
         res.end(data)
       }
     })
@@ -61,9 +61,9 @@ const proccesRequest = (req, res) => {
   }
 }
 
-// Ejercicio 1: crear servidor HTTP con Node
+// Ejercicio 1: crear servidor http con Node
 function startServer () {
-  const Server = HTTP.createServer(proccesRequest)
+  const Server = http.createServer(proccesRequest)
   Server.listen(PORT, () => {
     console.log('Escuchando el puerto: http://localhost:' + PORT)
   })
