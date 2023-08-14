@@ -1,10 +1,19 @@
-### Petición GET /
+### [X] Petición GET / HTML
 GET http://localhost:1234/
 
-### Petición imagen
+### [X] Petición imagen
 GET http://localhost:1234/logo.webp
 
-### POST
+### [X] HTML 404
+GET http://localhost:1234/404
+
+### [X] POST 404
+POST http://localhost:1234/dlfkgjdlkfg
+
+### [X] GET 404
+GET http://localhost:1234/dfskdjghfksjd
+
+### [X] POST Contacto 201
 POST http://localhost:1234/contacto
 Content-Type: application/json
 
@@ -14,8 +23,6 @@ Content-Type: application/json
   "message": "transform"
 }
 
-### POST 404
-POST http://localhost:1234/dlfkgjdlkfg
-
-### GET 404
-GET http://localhost:1234/dfskdjghfksjd
+### [X] 405
+POST http://localhost:1234/
+Content-Type: application/json

@@ -2,21 +2,28 @@ const http = require('node:http')
 const fs = require('node:fs')
 
 const PORT = process.env.PORT ?? 1234
+const routerGet = {
+  home: '/',
+  logo: '/logo.webp'
+}
+const routerPost = {
+  contact: '/contacto'
+}
 
-const err404 = (req, res) => {
+const err = (req, res, status = 404) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
-  res.statusCode = 404 // Not Found
-  res.end('<h1>404</h1>')
+  res.statusCode = status // Not Found
+  res.end(`<h1>${status}</h1>`)
 }
 
 const methodGet = (req, res) => {
-  if (req.url === '/') {
+  if (req.url === routerGet.home) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8')
     res.end('<h1>¡Hola mundo!</h1>')
     return true
   }
 
-  if (req.url === '/logo.webp') {
+  if (req.url === routerGet.logo) {
     fs.readFile('./assets/logo.webp', (err, data) => {
       if (err) {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
@@ -28,14 +35,14 @@ const methodGet = (req, res) => {
       }
     })
   } else {
-    err404(req, res)
+    err(req, res)
   }
 
   return false
 }
 
 const methodPost = (req, res) => {
-  if (req.url === '/contacto') {
+  if (req.url === routerPost.contact) {
     let data = ''
     req.on('data', (chunk) => {
       data += chunk
@@ -47,13 +54,18 @@ const methodPost = (req, res) => {
       res.end(data)
     })
   } else {
-    err404(req, res)
+    err(req, res)
   }
 }
 
 const proccesRequest = (req, res) => {
   if (req.method === 'GET') {
     methodGet(req, res)
+  }
+
+  if (Object.keys(routerGet).some((key) => routerGet[key] === req.url)) {
+    err(req, res, 405)
+    return
   }
 
   if (req.method === 'POST') {
@@ -71,6 +83,8 @@ function startServer () {
 
   return server
 }
+
+// startServer()
 
 module.exports = {
   startServer
