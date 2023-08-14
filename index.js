@@ -65,9 +65,11 @@ const proccesRequest = (req, res) => {
 function startServer () {
   const server = http.createServer(proccesRequest)
 
-  return server.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log('Escuchando el puerto: http://localhost:' + PORT)
   })
+
+  return server
 }
 
 module.exports = {
