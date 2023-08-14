@@ -63,14 +63,12 @@ const proccesRequest = (req, res) => {
 
 // Ejercicio 1: crear servidor http con Node
 function startServer () {
-  const Server = http.createServer(proccesRequest)
-  Server.listen(PORT, () => {
+  const server = http.createServer(proccesRequest)
+
+  return server.listen(PORT, () => {
     console.log('Escuchando el puerto: http://localhost:' + PORT)
   })
-  return Server
 }
-
-// startServer()
 
 module.exports = {
   startServer
