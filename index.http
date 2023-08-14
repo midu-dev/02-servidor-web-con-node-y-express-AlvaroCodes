@@ -23,6 +23,12 @@ Content-Type: application/json
   "message": "transform"
 }
 
-### [X] 405
-POST http://localhost:1234/
+### [X] PUT 405
+PUT http://localhost:1234/contacto
 Content-Type: application/json
+
+{
+  "name": "ditto",
+  "email": "normal",
+  "message": "transform"
+}

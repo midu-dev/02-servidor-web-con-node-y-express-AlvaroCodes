@@ -59,13 +59,18 @@ const methodPost = (req, res) => {
 }
 
 const proccesRequest = (req, res) => {
-  if (req.method === 'GET') {
-    methodGet(req, res)
-  }
-
-  if (Object.keys(routerGet).some((key) => routerGet[key] === req.url)) {
+  if (req.method !== 'GET' && Object.keys(routerGet).some((key) => routerGet[key] === req.url)) {
     err(req, res, 405)
     return
+  }
+
+  if (req.method !== 'POST' && Object.keys(routerPost).some((key) => routerPost[key] === req.url)) {
+    err(req, res, 405)
+    return
+  }
+
+  if (req.method === 'GET') {
+    methodGet(req, res)
   }
 
   if (req.method === 'POST') {
