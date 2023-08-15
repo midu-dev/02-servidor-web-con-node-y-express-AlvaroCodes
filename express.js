@@ -15,7 +15,7 @@ const routerPost = {
 }
 
 // Ejercicio 2: crear servidor HTTP con express
-async function startServer () {
+function startServer () {
   const app = express()
   app.disable('x-powered-by')
 
@@ -37,7 +37,7 @@ async function startServer () {
   // Routers
   routers(app)
   // Server
-  const server = await app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log('Server in ' + PORT)
   })
 
