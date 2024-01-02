@@ -1,0 +1,32 @@
+### [X] GET / Hola Mundo
+GET http://localhost:1234/
+
+### [X] POST / 405
+POST http://localhost:1234/
+
+### [X] GET / Petición imagen
+GET http://localhost:1234/logo.webp
+
+### [X] GET /  404
+GET http://localhost:1234/404
+
+### [X] POST / Contact 201
+POST http://localhost:1234/contacto
+Content-Type: application/json
+
+{
+  "name": "ditto",
+  "email": "normal",
+  "message": "transform"
+}
+
+
+### [X] PUT / Contect 405
+PUT http://localhost:1234/contacto
+Content-Type: application/json
+
+{
+  "name": "ditto",
+  "email": "normal",
+  "message": "transform"
+}
